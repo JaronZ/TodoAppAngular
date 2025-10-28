@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
+  background-color: lightgray;
+}
+
+.button {
+  padding: 8px 20px;
+  border: none;
+  background-color: green;
+  color: white;
 }
