@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {Todo} from './todo/todo';
 import {Details} from './details/details';
 import {AddTodo} from './add-todo/add-todo';
+import {EditTodo} from './edit-todo/edit-todo';
 
 export const routes: Routes = [
   {
@@ -18,5 +19,10 @@ export const routes: Routes = [
     path: "add",
     component: AddTodo,
     title: "Add Todo"
+  },
+  {
+    path: "edit/:id",
+    component: EditTodo,
+    title: "Edit Todo"
   }
 ];

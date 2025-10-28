@@ -3,7 +3,7 @@
   <p>{{info().dueDate?.toDateString() ?? ""}}</p>
   <div class="todo-buttons">
     <a class="button" [routerLink]="['/details', info().id]">View</a>
-    <button class="button">Edit</button>
+    <a class="button" [routerLink]="['/edit', info().id]">Edit</a>
     <button class="button" (click)="delete.emit()">Delete</button>
   </div>
 </div>
