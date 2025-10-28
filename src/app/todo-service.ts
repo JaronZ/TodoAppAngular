@@ -26,4 +26,8 @@ export class TodoService {
   getTodoById(id: number): TodoItemInfo | undefined {
     return this.todoItems.find(item => item.id === id);
   }
+
+  submitTodo(todoItemInfo: TodoItemInfo) {
+    console.log(todoItemInfo);
+  }
 }

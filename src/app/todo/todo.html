@@ -1,6 +1,6 @@
 <div class="title">
   <h1>Tasks</h1>
-  <button class="button">Add task</button>
+  <a class="button" [routerLink]="['add']">Add task</a>
 </div>
 <ul class="todo-list">
   @for (item of todoItems; track item.id) {

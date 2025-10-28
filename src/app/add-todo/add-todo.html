@@ -1,0 +1,13 @@
+<h1>Add Todo</h1>
+<form [formGroup]="addTodoForm" (submit)="submitTodo()">
+  <label for="name">Name</label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="due-date">Due Date</label>
+  <input id="due-date" type="date" formControlName="date">
+
+  <label for="description">Description</label>
+  <textarea id="description" formControlName="description"></textarea>
+
+  <button type="submit" class="button">Create</button>
+</form>
