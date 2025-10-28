@@ -3,5 +3,9 @@
   <button class="button">Add task</button>
 </div>
 <ul class="todo-list">
-  <li><app-todo-item [info]="info" /></li>
+  @for (item of items; track item.id) {
+    <li>
+      <app-todo-item [info]="item" />
+    </li>
+  }
 </ul>

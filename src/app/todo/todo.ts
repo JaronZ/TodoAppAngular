@@ -9,9 +9,16 @@ import { TodoItemInfo } from '../todo-item-info';
   styleUrl: './todo.css',
 })
 export class Todo {
-  info: TodoItemInfo = {
-    id: 1,
-    name: "Homework",
-    date: new Date()
-  };
+  items: TodoItemInfo[] = [
+    {
+      id: 1,
+      name: "Buy groceries",
+      date: new Date('2024-07-01'),
+    },
+    {
+      id: 2,
+      name: "Walk the dog",
+      date: new Date('2024-07-02'),
+    }
+  ];
 }
