@@ -35,7 +35,7 @@ export class TodoService {
   private async getLastId(): Promise<number> {
     const data = await fetch(`${this.url}?_sort=-id&_limit=1`);
     const taskJson = await data.json();
-    return taskJson[0] ? taskJson[0].id : -1;
+    return Number(taskJson[0] ? taskJson[0].id : -1);
   }
 
   private transformTaskFromAPI(task: APITodoItemInfo): TodoItemInfo {
