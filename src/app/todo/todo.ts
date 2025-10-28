@@ -13,12 +13,12 @@ export class Todo {
     {
       id: 1,
       name: "Buy groceries",
-      date: new Date('2024-07-01'),
+      dueDate: new Date('2024-07-01'),
     },
     {
       id: 2,
       name: "Walk the dog",
-      date: new Date('2024-07-02'),
+      dueDate: new Date('2024-07-02'),
     }
   ];
 }

@@ -1,5 +1,5 @@
 export interface TodoItemInfo {
   id: number;
   name: string;
-  date?: Date;
+  dueDate?: Date;
 }
