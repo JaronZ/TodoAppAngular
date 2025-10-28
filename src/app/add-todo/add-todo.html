@@ -1,13 +1,19 @@
 <h1>Add Todo</h1>
 <form [formGroup]="addTodoForm" (submit)="submitTodo()">
-  <label for="name">Name</label>
-  <input id="name" type="text" formControlName="name" />
+  <div class="form-group">
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" id="name" type="text" formControlName="name"/>
+  </div>
 
-  <label for="due-date">Due Date</label>
-  <input id="due-date" type="date" formControlName="date">
+  <div class="form-group">
+    <label class="form-label" for="due-date">Due Date</label>
+    <input class="form-control" id="due-date" type="date" formControlName="date">
+  </div>
 
-  <label for="description">Description</label>
-  <textarea id="description" formControlName="description"></textarea>
+  <div class="form-group">
+    <label class="form-label" for="description">Description</label>
+    <textarea rows="20" class="form-control" id="description" formControlName="description"></textarea>
+  </div>
 
   <button type="submit" class="button">Create</button>
 </form>

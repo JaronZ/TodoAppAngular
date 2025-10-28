@@ -1,1 +1,19 @@
-<p>edit-todo works!</p>
+<h1>Edit Todo</h1>
+<form [formGroup]="editTodoForm" (submit)="submitEdit()">
+  <div class="form-group">
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" id="name" type="text" formControlName="name"/>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="due-date">Due Date</label>
+    <input class="form-control" id="due-date" type="date" formControlName="date">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="description">Description</label>
+    <textarea rows="20" class="form-control" id="description" formControlName="description"></textarea>
+  </div>
+
+  <button type="submit" class="button">Edit</button>
+</form>

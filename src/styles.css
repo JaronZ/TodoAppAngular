@@ -4,6 +4,10 @@ body {
   background-color: lightgray;
 }
 
+p, label, button, input, textarea {
+  font-size: 16px;
+}
+
 .button {
   padding: 8px 20px;
   border: none;
@@ -11,4 +15,19 @@ body {
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }

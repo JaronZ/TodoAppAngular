@@ -32,6 +32,13 @@ export class TodoService {
     });
   }
 
+  async editTodo(todoItemInfo: TodoItemInfo): Promise<void> {
+    await fetch(`${this.url}/${todoItemInfo.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(this.transformTaskToAPI(todoItemInfo)),
+    });
+  }
+
   private async getLastId(): Promise<number> {
     const data = await fetch(`${this.url}?_sort=-id&_limit=1`);
     const taskJson = await data.json();
