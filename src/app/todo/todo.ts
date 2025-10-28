@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TodoItem } from '../todo-item/todo-item';
+import { TodoService } from '../todo-service';
 import { TodoItemInfo } from '../todo-item-info';
 
 @Component({
@@ -9,16 +10,10 @@ import { TodoItemInfo } from '../todo-item-info';
   styleUrl: './todo.css',
 })
 export class Todo {
-  items: TodoItemInfo[] = [
-    {
-      id: 1,
-      name: "Buy groceries",
-      dueDate: new Date('2024-07-01'),
-    },
-    {
-      id: 2,
-      name: "Walk the dog",
-      dueDate: new Date('2024-07-02'),
-    }
-  ];
+  todoItems: TodoItemInfo[] = [];
+  todoService: TodoService = inject(TodoService);
+
+  constructor() {
+    this.todoItems = this.todoService.getAllTodos();
+  }
 }
