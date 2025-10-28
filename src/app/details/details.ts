@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TodoService } from '../todo-service';
+import { TodoItemInfo } from '../todo-item-info';
 
 @Component({
   selector: 'app-details',
@@ -7,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrl: './details.css',
 })
 export class Details {
+    route: ActivatedRoute = inject(ActivatedRoute);
+    todoService: TodoService = inject(TodoService);
+    todoItem?: TodoItemInfo;
 
+    constructor() {
+      const todoId = Number(this.route.snapshot.params['id']);
+      this.todoItem = this.todoService.getTodoById(todoId);
+    }
 }

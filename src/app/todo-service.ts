@@ -21,4 +21,8 @@ export class TodoService {
   getAllTodos(): TodoItemInfo[] {
     return this.todoItems;
   }
+
+  getTodoById(id: number): TodoItemInfo | undefined {
+    return this.todoItems.find(item => item.id === id);
+  }
 }
