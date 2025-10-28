@@ -5,29 +5,29 @@ import { TodoItemInfo } from './todo-item-info';
   providedIn: 'root'
 })
 export class TodoService {
-  todoItems: TodoItemInfo[] = [
-    {
-      id: 1,
-      name: "Buy groceries",
-      dueDate: new Date('2024-07-01'),
-      description: "Milk, Bread, Eggs"
-    },
-    {
-      id: 2,
-      name: "Walk the dog",
-      dueDate: new Date('2024-07-02'),
-    }
-  ];
+  url = "http://localhost:3000/tasks";
 
-  getAllTodos(): TodoItemInfo[] {
-    return this.todoItems;
+  async getAllTodos(): Promise<TodoItemInfo[]> {
+    const data = await fetch(this.url);
+    return ((await data.json()) ?? []).map(this.transformTask);
   }
 
-  getTodoById(id: number): TodoItemInfo | undefined {
-    return this.todoItems.find(item => item.id === id);
+  async getTodoById(id: number): Promise<TodoItemInfo | undefined> {
+    const data = await fetch(`${this.url}/${id}`);
+    const taskJson = await data.json();
+    return taskJson[0] ? this.transformTask(taskJson[0]) : undefined;
   }
 
   submitTodo(todoItemInfo: TodoItemInfo) {
     console.log(todoItemInfo);
+  }
+
+  private transformTask(task: any): TodoItemInfo {
+    return {
+      id: task.id,
+      name: task.name,
+      dueDate: task.dueDate ? new Date(task.dueDate) : undefined,
+      description: task.description,
+    };
   }
 }

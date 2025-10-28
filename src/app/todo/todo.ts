@@ -15,6 +15,9 @@ export class Todo {
   todoService: TodoService = inject(TodoService);
 
   constructor() {
-    this.todoItems = this.todoService.getAllTodos();
+    this.todoService.getAllTodos().then((tasks) => {
+      console.log(tasks);
+      this.todoItems = tasks;
+    });
   }
 }

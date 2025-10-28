@@ -15,7 +15,9 @@ export class Details {
     todoItem?: TodoItemInfo;
 
     constructor() {
-      const todoId = Number(this.route.snapshot.params['id']);
-      this.todoItem = this.todoService.getTodoById(todoId);
+      const todoId = parseInt(this.route.snapshot.params['id'], 10);
+      this.todoService.getTodoById(todoId).then((task) => {
+        this.todoItem = task;
+      });
     }
 }
