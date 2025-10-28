@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoItem } from '../todo-item/todo-item';
+import { TodoItemInfo } from '../todo-item-info';
 
 @Component({
   selector: 'app-todo',
@@ -8,5 +9,9 @@ import { TodoItem } from '../todo-item/todo-item';
   styleUrl: './todo.css',
 })
 export class Todo {
-  date = new Date();
+  info: TodoItemInfo = {
+    id: 1,
+    name: "Homework",
+    date: new Date()
+  };
 }
