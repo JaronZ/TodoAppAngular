@@ -1,6 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { TodoItemInfo } from '../todo-item-info';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-todo-item',
@@ -12,4 +12,5 @@ import {RouterLink} from '@angular/router';
 })
 export class TodoItem {
   info = input.required<TodoItemInfo>();
+  delete = output<void | Promise<void>>();
 }

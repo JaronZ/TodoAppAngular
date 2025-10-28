@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { TodoItem } from '../todo-item/todo-item';
 import { TodoService } from '../todo-service';
 import { TodoItemInfo } from '../todo-item-info';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -18,5 +18,10 @@ export class Todo {
     this.todoService.getAllTodos().then((tasks) => {
       this.todoItems = tasks;
     });
+  }
+
+  async deleteTodo(id: number) {
+    await this.todoService.deleteTodo(id);
+    this.todoItems = this.todoItems.filter((item) => item.id !== id);
   }
 }

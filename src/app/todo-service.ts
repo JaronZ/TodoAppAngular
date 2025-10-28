@@ -26,6 +26,12 @@ export class TodoService {
     });
   }
 
+  async deleteTodo(id: number): Promise<void> {
+    await fetch(`${this.url}/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
   private async getLastId(): Promise<number> {
     const data = await fetch(`${this.url}?_sort=-id&_limit=1`);
     const taskJson = await data.json();

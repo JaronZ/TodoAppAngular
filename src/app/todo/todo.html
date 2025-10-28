@@ -5,7 +5,7 @@
 <ul class="todo-list">
   @for (item of todoItems; track item.id) {
     <li>
-      <app-todo-item [info]="item" />
+      <app-todo-item [info]="item" (delete)="deleteTodo(item.id)" />
     </li>
   }
 </ul>
