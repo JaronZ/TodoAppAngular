@@ -16,7 +16,6 @@ export class Todo {
 
   constructor() {
     this.todoService.getAllTodos().then((tasks) => {
-      console.log(tasks);
       this.todoItems = tasks;
     });
   }

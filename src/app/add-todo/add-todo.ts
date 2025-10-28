@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from '../todo-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,6 +10,7 @@ import { TodoService } from '../todo-service';
   styleUrl: './add-todo.css',
 })
 export class AddTodo {
+  router = inject(Router);
   todoService = inject(TodoService);
   addTodoForm = new FormGroup({
     name: new FormControl(''),
@@ -16,12 +18,13 @@ export class AddTodo {
     description: new FormControl('')
   });
 
-  submitTodo() {
-    this.todoService.submitTodo({
+  async submitTodo() {
+    await this.todoService.submitTodo({
       id: -1,
       name: String(this.addTodoForm.value.name),
       dueDate: new Date(String(this.addTodoForm.value.date)),
       description: String(this.addTodoForm.value.description),
     });
+    await this.router.navigate(['/']);
   }
 }
