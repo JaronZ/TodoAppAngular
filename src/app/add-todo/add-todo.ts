@@ -22,7 +22,7 @@ export class AddTodo {
     await this.todoService.submitTodo({
       id: -1,
       name: String(this.addTodoForm.value.name),
-      dueDate: new Date(String(this.addTodoForm.value.date)),
+      dueDate: this.addTodoForm.value.date ? new Date(String(this.addTodoForm.value.date)) : undefined,
       description: String(this.addTodoForm.value.description),
     });
     await this.router.navigate(['/']);
