@@ -1,9 +1,12 @@
 import { Component, input } from '@angular/core';
 import { TodoItemInfo } from '../todo-item-info';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-todo-item',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './todo-item.html',
   styleUrl: './todo-item.css',
 })
