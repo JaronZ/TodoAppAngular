@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-todo-item',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './todo-item.css',
 })
 export class TodoItem {
-
+  name = input.required<string>()
+  date = input<Date>()
 }

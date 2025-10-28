@@ -8,5 +8,5 @@ import { TodoItem } from '../todo-item/todo-item';
   styleUrl: './todo.css',
 })
 export class Todo {
-
+  date = new Date();
 }
