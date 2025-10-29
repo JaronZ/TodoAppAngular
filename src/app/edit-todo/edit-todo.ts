@@ -38,6 +38,12 @@ export class EditTodo {
     }
 
     async submitEdit() {
-
+        await this.todoService.editTodo({
+          id: this.todoId,
+          name: this.editTodoForm.value.name ?? "",
+          dueDate: this.editTodoForm.value.date ? new Date(this.editTodoForm.value.date) : undefined,
+          description: this.editTodoForm.value.description ?? undefined
+        });
+        await this.router.navigate(["/"]);
     }
 }
