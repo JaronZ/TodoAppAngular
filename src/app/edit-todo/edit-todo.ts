@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TodoService } from '../todo-service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {TODO_SERVICE} from '../token';
 
 @Component({
   selector: 'app-edit-todo',
@@ -14,8 +14,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditTodo {
     route = inject(ActivatedRoute);
     router = inject(Router);
-    todoService = inject(TodoService);
-    todoId: number = -1;
+    todoService = inject(TODO_SERVICE);
+    todoId: string;
     editTodoForm = new FormGroup({
       name: new FormControl(''),
       date: new FormControl(''),
@@ -23,8 +23,8 @@ export class EditTodo {
     });
 
     constructor() {
-      this.todoId = parseInt(this.route.snapshot.params['id'], 10);
-      this.todoService.getTodoById(this.todoId).then((task) => {
+      this.todoId = this.route.snapshot.params['id'];
+      this.todoService.getTodo(this.todoId)?.then((task) => {
         if (!task) {
           return;
         }

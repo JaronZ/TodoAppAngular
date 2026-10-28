@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TodoService } from '../todo-service';
 import { Router } from '@angular/router';
+import {TODO_SERVICE} from '../token';
 
 @Component({
   selector: 'app-add-todo',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddTodo {
   router = inject(Router);
-  todoService = inject(TodoService);
+  todoService = inject(TODO_SERVICE);
   addTodoForm = new FormGroup({
     name: new FormControl(''),
     date: new FormControl(''),
@@ -20,7 +20,7 @@ export class AddTodo {
 
   async submitTodo() {
     await this.todoService.submitTodo({
-      id: -1,
+      id: "",
       name: String(this.addTodoForm.value.name),
       dueDate: this.addTodoForm.value.date ? new Date(String(this.addTodoForm.value.date)) : undefined,
       description: String(this.addTodoForm.value.description),

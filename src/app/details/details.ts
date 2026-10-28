@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TodoService } from '../todo-service';
 import { TodoItemInfo } from '../todo-item-info';
+import {TODO_SERVICE} from '../token';
 
 @Component({
   selector: 'app-details',
@@ -11,13 +11,13 @@ import { TodoItemInfo } from '../todo-item-info';
 })
 export class Details {
     route: ActivatedRoute = inject(ActivatedRoute);
-    todoService: TodoService = inject(TodoService);
-    todoItem?: TodoItemInfo;
+    todoService = inject(TODO_SERVICE);
+    todoItem: WritableSignal<TodoItemInfo | undefined> = signal(undefined);
 
     constructor() {
-      const todoId = parseInt(this.route.snapshot.params['id'], 10);
-      this.todoService.getTodoById(todoId).then((task) => {
-        this.todoItem = task;
+      const todoId = this.route.snapshot.params['id'];
+      this.todoService.getTodo(todoId).then((task) => {
+        this.todoItem.update(() => task);
       });
     }
 }

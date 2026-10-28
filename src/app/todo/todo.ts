@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, signal, WritableSignal} from '@angular/core';
 import { TodoItem } from '../todo-item/todo-item';
-import { TodoService } from '../todo-service';
 import { TodoItemInfo } from '../todo-item-info';
 import { RouterLink } from '@angular/router';
+import {TODO_SERVICE} from '../token';
 
 @Component({
   selector: 'app-todo',
@@ -11,17 +11,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './todo.css',
 })
 export class Todo {
-  todoItems: TodoItemInfo[] = [];
-  todoService: TodoService = inject(TodoService);
+  todoItems: WritableSignal<TodoItemInfo[]> = signal([]);
+  todoService = inject(TODO_SERVICE);
 
   constructor() {
     this.todoService.getAllTodos().then((tasks) => {
-      this.todoItems = tasks;
+      this.todoItems.update(() => tasks);
     });
   }
 
-  async deleteTodo(id: number) {
+  async deleteTodo(id: string) {
     await this.todoService.deleteTodo(id);
-    this.todoItems = this.todoItems.filter((item) => item.id !== id);
+    this.todoItems.update(todos => todos.filter((item) => item.id !== id));
   }
 }

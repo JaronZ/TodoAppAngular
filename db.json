@@ -1,26 +1,11 @@
 {
   "tasks": [
     {
-      "id": "2",
-      "name": "Walk the dog",
-      "dueDate": "2024-07-02T00:00:00.000Z"
-    },
-    {
-      "id": "3",
-      "name": "Eat food",
-      "dueDate": "2025-10-31T00:00:00.000Z",
-      "description": ""
-    },
-    {
-      "id": "4",
-      "name": "Dog walk",
-      "description": ""
-    },
-    {
-      "id": "5",
-      "name": "Eat food",
-      "dueDate": "2025-10-31T00:00:00.000Z",
-      "description": "Eat something. Just anything."
+      "id": "8ceT29Nje4c",
+      "name": "Walk the cat",
+      "dueDate": "2026-10-14T00:00:00.000Z",
+      "description": "ADasdDSA"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
